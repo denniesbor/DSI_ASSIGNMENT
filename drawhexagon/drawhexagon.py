@@ -116,6 +116,21 @@ class Hexagon:
     y = (p.y +q.y + r.y)/3
 
     return (x,y)
+  
+  def points(self):
+    p = self.centroid_triangle() #inherit random point from the user input and compute centroid.
+    random_points = []
+    for point in range(10000):
+      hexagon = Hexagon()
+      hexagon.random_tri(random_point = p)
+      triangle = hexagon.draw_triangle()
+      centroid = hexagon.centroid_triangle()
+      random_points.append(centroid)
+      p = centroid
+    
+    random_points = np.asarray(random_points)
+    
+    return random_points
 
   # The method returns matplotlib figure
   def show_figure(self,triangle = None,centroid = False):
